@@ -1,6 +1,7 @@
 package com.example.banco.demo.database.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class TransactionEntity {
     private float value;
 
     @ManyToOne
-    @JoinColumn(name = "idclient")
+    @JoinColumn(name = "clientId")
+    @JsonBackReference
     private ClientEntity client;
 }

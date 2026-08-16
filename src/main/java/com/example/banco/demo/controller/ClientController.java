@@ -5,6 +5,7 @@ import com.example.banco.demo.DTO.ClientDTO;
 import com.example.banco.demo.database.model.ClientEntity;
 import com.example.banco.demo.service.ClientService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +20,8 @@ public class ClientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveClient(@RequestBody ClientDTO clientDTO) {
-        clientService.saveClient(clientDTO);
+    public void createClient(@RequestBody ClientDTO clientDTO) {
+        clientService.createClient(clientDTO);
     }
 
     @GetMapping

@@ -25,7 +25,9 @@ public class ClientService {
     public ClientEntity findById(Long id) {
         return clientRepository.findById(id).orElse(null);
     }
-    public void saveClient(ClientDTO clientDTO) {
+
+
+    public void createClient(ClientDTO clientDTO) {
         ClientEntity clientEntity = ClientEntity.builder()
                 .name(clientDTO.getName())
                 .build();

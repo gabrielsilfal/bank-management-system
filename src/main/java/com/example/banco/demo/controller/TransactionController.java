@@ -1,0 +1,39 @@
+package com.example.banco.demo.controller;
+
+
+import com.example.banco.demo.DTO.TransactionDTO;
+import com.example.banco.demo.database.model.TransactionEntity;
+import com.example.banco.demo.database.repository.ITransactionRepository;
+import com.example.banco.demo.service.TransactionService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("clients/transactions")
+@RequiredArgsConstructor
+public class TransactionController {
+
+    private final TransactionService transactionService;
+
+    @PostMapping("/{clientId}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createTransaction(@RequestBody TransactionDTO transactionDTO, @PathVariable Long clientId) {
+            transactionService.createTransaction(transactionDTO, clientId);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<TransactionEntity> getTransactions() {
+        return transactionService.findAll();
+    }
+
+    @DeleteMapping("/{clientId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteTransaction(@PathVariable Long clientId) {
+        transactionService.deleteTransaction(clientId);
+    }
+}
