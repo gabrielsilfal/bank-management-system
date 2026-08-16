@@ -27,9 +27,13 @@ Database
 ```
 
 ## API Endpoints
-| Método | Endpoint | Descrição |
+| Method | Endpoint | Description |
 |--------|----------|-----------|
-| POST   | /clients | Criar cliente |
-| GET    | /clients | Listar clientes |
-| PUT    | /clients/{id} | Atualizar cliente |
-| DELETE | /clients/{id} | Deletar cliente |
+| POST   | /clients | Create a Client |
+| GET    | /clients | List Clients |
+| PUT    | /clients/{id} | Update a Client |
+| DELETE | /clients/{id} | Delete a Client |
+|--------|----------|-----------|
+| POST   | /clients/transactions | Create a Transaction |
+| GET    | /clients/transactions | List Transactions |
+| DELETE | /clients/transactions/{clientId} | Delete a Transaction |
