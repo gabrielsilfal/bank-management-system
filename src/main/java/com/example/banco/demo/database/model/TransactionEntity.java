@@ -1,9 +1,14 @@
 package com.example.banco.demo.database.model;
 
 
+import com.example.banco.demo.enums.TransactionType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "transactions")
@@ -19,7 +24,11 @@ public class TransactionEntity {
     private Long id;
 
     @Column(nullable = false)
-    private float value;
+    private BigDecimal value;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private TransactionType type;
 
     @ManyToOne
     @JoinColumn(name = "clientId")

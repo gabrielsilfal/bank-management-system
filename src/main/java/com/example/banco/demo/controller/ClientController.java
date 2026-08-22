@@ -2,10 +2,9 @@ package com.example.banco.demo.controller;
 
 
 import com.example.banco.demo.DTO.ClientDTO;
-import com.example.banco.demo.database.model.ClientEntity;
+import com.example.banco.demo.DTO.ClientResponseDTO;
 import com.example.banco.demo.service.ClientService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +25,14 @@ public class ClientController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ClientEntity> findAllClients() {
+    public List<ClientResponseDTO> getClients() {
         return clientService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ClientResponseDTO getClient(@PathVariable Long id) {
+        return  clientService.findById(id);
     }
 
     @PutMapping("/{id}")

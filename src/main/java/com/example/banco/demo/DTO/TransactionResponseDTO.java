@@ -1,6 +1,5 @@
 package com.example.banco.demo.DTO;
 
-
 import com.example.banco.demo.enums.TransactionType;
 import lombok.*;
 
@@ -12,8 +11,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TransactionDTO {
-
-   private BigDecimal value;
-   private TransactionType type;
+public class TransactionResponseDTO {
+    private BigDecimal value;
+    private TransactionType type;
 }

@@ -2,11 +2,9 @@ package com.example.banco.demo.controller;
 
 
 import com.example.banco.demo.DTO.TransactionDTO;
-import com.example.banco.demo.database.model.TransactionEntity;
-import com.example.banco.demo.database.repository.ITransactionRepository;
+import com.example.banco.demo.DTO.TransactionResponseDTO;
 import com.example.banco.demo.service.TransactionService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,8 +25,14 @@ public class TransactionController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<TransactionEntity> getTransactions() {
+    public List<TransactionResponseDTO> getTransactions() {
         return transactionService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public TransactionResponseDTO getTransaction(@PathVariable Long id) {
+        return  transactionService.findById(id);
     }
 
     @DeleteMapping("/{clientId}")
