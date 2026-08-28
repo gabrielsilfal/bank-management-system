@@ -17,6 +17,7 @@ public class toDTO {
     public ClientResponseDTO clientMapper(ClientEntity clientEntity) {
         return  ClientResponseDTO.builder()
                 .name(clientEntity.getName())
+                .transactions(clientEntity.getTransactions())
                 .build();
     }
 
