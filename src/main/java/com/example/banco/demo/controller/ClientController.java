@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/clients")
 @RequiredArgsConstructor
@@ -19,7 +20,7 @@ public class ClientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createClient(@RequestBody ClientDTO clientDTO) {
+    public void createClient( @RequestBody ClientDTO clientDTO) {
         clientService.createClient(clientDTO);
     }
 

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -22,7 +23,14 @@ public class ClientEntity {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "client")
+    @Column(nullable = false)
+    private BigDecimal balance;
+
+    @OneToMany(
+            mappedBy = "client",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     @JsonManagedReference
     private List<TransactionEntity> transactions;
 }

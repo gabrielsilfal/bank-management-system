@@ -19,7 +19,7 @@ public class TransactionController {
 
     @PostMapping("/{clientId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createTransaction(@RequestBody TransactionDTO transactionDTO, @PathVariable Long clientId) {
+    public void createTransaction(@Valid @RequestBody TransactionDTO transactionDTO, @PathVariable Long clientId) {
             transactionService.createTransaction(transactionDTO, clientId);
     }
 

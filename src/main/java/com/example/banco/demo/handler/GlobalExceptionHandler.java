@@ -2,6 +2,7 @@ package com.example.banco.demo.handler;
 
 
 import com.example.banco.demo.exception.ClientNotFoundException;
+import com.example.banco.demo.exception.InsufficientBalanceException;
 import com.example.banco.demo.exception.InvalidTransactionTypeException;
 import com.example.banco.demo.exception.TransactionNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -25,5 +26,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidTransactionTypeException.class)
     public ResponseEntity<String> handleInvalidTransactionTypeException(InvalidTransactionTypeException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<String> handleInsufficientBalanceException(InsufficientBalanceException e){
+     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }

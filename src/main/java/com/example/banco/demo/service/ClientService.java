@@ -11,6 +11,7 @@ import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -49,8 +50,10 @@ public class ClientService {
     }
 
     public void updateClient(ClientDTO clientDTO, Long id) {
-        ClientEntity clientEntity = clientRepository.findById(id).orElseThrow();;
+        ClientEntity clientEntity = clientRepository.findById(id).orElseThrow(()->
+                new ClientNotFoundException("Client not found "+ id));;
         clientEntity.setName(clientDTO.getName());
+        clientEntity.setBalance(clientDTO.getBalance());
         clientRepository.save(clientEntity);
     }
 
@@ -58,4 +61,5 @@ public class ClientService {
         ClientEntity clientEntity = clientRepository.findById(id).orElse(null);
         clientRepository.delete(clientEntity);
     }
+
 }
