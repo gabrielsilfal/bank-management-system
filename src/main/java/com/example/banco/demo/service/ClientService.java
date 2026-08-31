@@ -45,6 +45,7 @@ public class ClientService {
     public void createClient(ClientDTO clientDTO) {
         ClientEntity clientEntity = ClientEntity.builder()
                 .name(clientDTO.getName())
+                .balance(clientDTO.getBalance())
                 .build();
         clientRepository.save(clientEntity);
     }
