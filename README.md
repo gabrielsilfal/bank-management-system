@@ -96,7 +96,8 @@ Example:
 
 ```json
 {
-  "name": "John Doe"
+  "name": "John Doe",
+  "balance": 2500.00
 }
 ```
 
