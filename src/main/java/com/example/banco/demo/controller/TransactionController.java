@@ -36,9 +36,9 @@ public class TransactionController {
         return  transactionService.findById(id);
     }
 
-    @DeleteMapping("/{clientId}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTransaction(@PathVariable Long clientId) {
-        transactionService.deleteTransaction(clientId);
+    public void deleteTransaction(@PathVariable Long id) {
+        transactionService.deleteTransaction(id);
     }
 }
