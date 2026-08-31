@@ -7,6 +7,7 @@ import com.example.banco.demo.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class ClientController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createClient( @RequestBody ClientDTO clientDTO) {
+    public void createClient(@Valid @RequestBody ClientDTO clientDTO) {
         clientService.createClient(clientDTO);
     }
 
@@ -38,7 +39,7 @@ public class ClientController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateClient(@RequestBody ClientDTO clientDTO, @PathVariable Long id) {
+    public void updateClient(@Valid @RequestBody ClientDTO clientDTO, @PathVariable Long id) {
         clientService.updateClient(clientDTO, id);
     }
 
